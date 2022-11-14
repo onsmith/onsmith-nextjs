@@ -1,0 +1,30 @@
+/**
+ * Global styles
+ */
+
+@use './palette';
+
+/**
+ * Link styles
+ */
+.undecorated,
+.undecorated:hover,
+.undecorated:active {
+  text-decoration: none;
+}
+
+/**
+ * Body styles
+ */
+body {
+  font-family: 'Open Sans', sans-serif;
+
+  color: palette.$background-text-color;
+  background-color: palette.$background-color;
+
+  overflow-x: hidden;
+
+  @media (min-width: 1200px) {
+    text-align: center;
+  }
+}

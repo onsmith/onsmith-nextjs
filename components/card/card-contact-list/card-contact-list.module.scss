@@ -1,0 +1,34 @@
+/**
+ * Contact list
+ */
+
+@use '/styles/palette';
+
+.card-contact-list {
+  padding-left: 0;
+  margin: 0.5em 0;
+  list-style-type: none;
+
+  .card-contact-icon {
+    display: inline-block;
+    font-size: 1.7em;
+    margin: 0 0.5em;
+    text-align: center;
+
+    > a {
+      color: palette.$card1-text-color;
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      border-radius: 50%;
+      transition: color 300ms, background-color 300ms;
+
+      &:hover,
+      &:active {
+        color: palette.$card1-background-color;
+        background-color: palette.$card1-text-color;
+      }
+    }
+  }
+}

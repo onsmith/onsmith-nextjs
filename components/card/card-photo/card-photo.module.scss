@@ -1,0 +1,14 @@
+@use '/styles/palette';
+
+.info-card-photo {
+  margin: 1em 0.5em;
+  width: 250px;
+  height: 250px;
+  border: 3px solid palette.$card1-text-color;
+  border-radius: 50%;
+
+  img {
+    background-color: palette.$card1-text-color;
+    border-radius: 50%;
+  }
+}
