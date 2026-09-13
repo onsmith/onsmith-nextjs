@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "test": "node --test"
+    "test": "node --test",
+    "check": "node scripts/check-output.ts"
   },
   "dependencies": {
     "next": "16.3.5",
