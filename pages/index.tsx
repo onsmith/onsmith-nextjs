@@ -1,219 +1,167 @@
-import * as React from "react";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
+import { ContactLinks } from "@/components/contact-links";
+import { Highlights } from "@/components/highlights";
+import { Organization } from "@/components/organization";
+import { Profile } from "@/components/profile";
+import { Role } from "@/components/role";
+import { Section } from "@/components/section";
+import { SectionNav } from "@/components/section-nav";
+import { SkillGroup } from "@/components/skill-group";
+import { SplitLayout } from "@/components/split-layout";
+import { encodeEmail } from "@/lib/email";
 
-import {
-  faChalkboardTeacher,
-  faCoffee,
-  faDatabase,
-  faDesktop,
-  faFileArchive,
-  faGem,
-  faGraduationCap,
-  faHandsHelping,
-  faMapMarkerAlt,
-  faTh,
-  faUniversity,
-  faVideo,
-} from "@fortawesome/free-solid-svg-icons";
+export const getStaticProps = (() => ({
+  props: { email: encodeEmail("onsmith13@gmail.com") },
+})) satisfies GetStaticProps;
 
-import {
-  faAws,
-  faDocker,
-  faGithub,
-  faLinkedin,
-  faJs,
-  faPython,
-  faReact,
-  faTwitter,
-  faJava,
-  faRust,
-} from "@fortawesome/free-brands-svg-icons";
+const name = "Aaron J Smith";
+const summary =
+  "Computer science Ph.D. specializing in video coding and compression, now building exabyte-scale storage and network systems at AWS in Rust; US patent in layered video coding, former UNC professor.";
 
-import InfoCard from "components/card/info-card/info-card";
-import CardText from "components/card/card-text/card-text";
-import CardTitle from "components/card/card-title/card-title";
-import CardIcon from "components/card/card-icon/card-icon";
-import CardPhoto from "components/card/card-photo/card-photo";
-import CardList from "components/card/card-list/card-list";
-import CardListItem from "components/card/card-list/card-list-item";
-import CardContactList from "components/card/card-contact-list/contact-list";
-import CardContactListItem from "components/card/card-contact-list/contact-list-item";
-
-export default function IndexPage() {
+export default function Home({ email }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <main>
-      <InfoCard>
-        <CardPhoto />
-
-        <CardTitle>Hi, I&apos;m Aaron.</CardTitle>
-
-        <CardText>
-          I&apos;m a Software Development Engineer at Amazon. I work for AWS S3
-          on data compression.
-        </CardText>
-
-        <CardText>
-          In 2021, I earned a PhD in Computer Science from UNC Chapel Hill. My
-          published research includes video compression, frameless video
-          representation, and CS education.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faHandsHelping} />
-
-        <CardTitle>Mission</CardTitle>
-
-        <CardText>
-          I try to make the world a better place by respecting, inspiring,
-          enabling, and listening to those around me.
-        </CardText>
-
-        <CardText>
-          My interests include developing equitable and scalable tools for
-          undergraduate CS education, web technology, data compression,
-          entrepreneurship, cloud services, and software engineering.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faGraduationCap} />
-
-        <CardTitle>Education</CardTitle>
-
-        <CardText>
-          I studied Computer Science at the{" "}
-          <a href="https://www.unc.edu/" target="_blank" rel="noreferrer">
-            University of North Carolina at Chapel Hill
-          </a>{" "}
-          from 2014 to 2021. I received a M.S. in 2019 and a Ph.D. in 2021.
-        </CardText>
-
-        <CardText>
-          I attended{" "}
-          <a href="https://www.coastal.edu/" target="_blank" rel="noreferrer">
-            Coastal Carolina University
-          </a>{" "}
-          in Conway, SC for undergrad from 2010 to 2014. I received B.S. degrees
-          in Applied Mathematics and Computer Science, with a 4.0 cumulative
-          GPA.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faMapMarkerAlt} />
-
-        <CardTitle>Location</CardTitle>
-
-        <CardText>
-          I was born in <strong>Worcester,&nbsp;MA</strong>, grew up in{" "}
-          <strong>Myrtle&nbsp;Beach,&nbsp;SC</strong>, and now live in{" "}
-          <strong>Durham,&nbsp;NC</strong>.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faFileArchive} />
-
-        <CardTitle>Compression Research</CardTitle>
-
-        <CardText>
-          My Ph.D. research is in video compression. My thesis argues that video
-          content should be encoded at the source using a flexible initial
-          representation that supports top-down, receiver-driven adaptation for
-          use by diverse client applications.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faUniversity} />
-
-        <CardTitle>Educational Research</CardTitle>
-
-        <CardText>
-          I am very interested in educational research, particularly in
-          developing teaching resources that scale to large course sizes.
-        </CardText>
-
-        <CardText>
-          I created{" "}
-          <a href="https://mydigitalhand.org" target="_blank" rel="noreferrer">
-            My&nbsp;Digital&nbsp;Hand
-          </a>{" "}
-          to improve student-led office&nbsp;hours in large CS&nbsp;courses. My
-          Digital Hand is used by numerous universities in North America,
-          including UNC.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faChalkboardTeacher} />
-
-        <CardTitle>Teaching</CardTitle>
-
-        <CardText>
-          I have been the primary instructor for computer science courses at UNC
-          since 2019.
-        </CardText>
-
-        <CardText>
-          Courses I have been involved in teaching include Data Compression,
-          Modern Web Programming, Software Engineering, Foundations of
-          Programming, Models of Languages and Computation, and Intro to
-          Programming.
-        </CardText>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faDesktop} />
-
-        <CardText>Here are some technologies I love:</CardText>
-
-        <CardList>
-          <CardListItem icon={faJs}>TypeScript</CardListItem>
-          <CardListItem icon={faReact}>React</CardListItem>
-          <CardListItem icon={faDatabase}>PostgreSQL</CardListItem>
-          <CardListItem icon={faAws}>AWS</CardListItem>
-          <CardListItem icon={faPython}>Python</CardListItem>
-          <CardListItem icon={faVideo}>H.265/HEVC</CardListItem>
-          <CardListItem icon={faRust}>Rust</CardListItem>
-          <CardListItem icon={faJava}>Java</CardListItem>
-          <CardListItem icon={faDocker}>Docker</CardListItem>
-          <CardListItem icon={faGem}>Rails</CardListItem>
-          <CardListItem icon={faTh}>MATLAB</CardListItem>
-        </CardList>
-      </InfoCard>
-
-      <InfoCard>
-        <CardIcon icon={faCoffee} />
-
-        <CardText>
-          Want to learn more? Check out{" "}
-          <a href="/SmithAaronTeachingCV.pdf" rel="noreferrer" target="_blank">
-            my curriculum vitae
-          </a>
-          .
-        </CardText>
-
-        <CardText>
-          Want to get in touch, get coffee, or have a conversation? Here&apos;s
-          how to reach me.
-        </CardText>
-
-        <CardContactList>
-          <CardContactListItem
-            href="https://www.linkedin.com/in/onsmith13/"
-            icon={faLinkedin}
+    <>
+      <Head>
+        <title>{name}</title>
+        <meta name="description" content={summary} />
+        <meta property="og:title" content={name} />
+        <meta property="og:description" content={summary} />
+        <meta property="og:url" content="https://www.onsmith.com/" />
+        <meta property="og:image" content="https://www.onsmith.com/headshot.jpg" />
+        <meta property="og:type" content="profile" />
+      </Head>
+      <SplitLayout
+        sidebar={
+          <Profile
+            name={name}
+            role="Software Development Engineer at Amazon Web Services"
+            location="Durham, NC"
+            headshot="/headshot.jpg"
+            summary={summary}
+            contacts={
+              <ContactLinks
+                linkedin="https://www.linkedin.com/in/onsmith13/"
+                github="https://github.com/onsmith"
+                email={email}
+                resume="/resume.pdf"
+              />
+            }
+            nav={
+              <SectionNav
+                sections={[
+                  { id: "experience", title: "Experience" },
+                  { id: "education", title: "Education" },
+                  { id: "skills", title: "Skills" },
+                ]}
+              />
+            }
           />
-          <CardContactListItem
-            href="https://twitter.com/onsmith13"
-            icon={faTwitter}
+        }
+      >
+        <Section id="experience" title="Experience">
+          <Organization name="Amazon Web Services" location="Raleigh, NC" dates="July 2022 – Present">
+            <Role title="Software Development Engineer" team="Network Product Development" dates="May 2025 – Present">
+              <Highlights summary="The Rust replacement for AWS’s legacy switch agent, translating Linux kernel network state into ASIC hardware">
+                <li>
+                  Owned the specification of correct daemon behavior, adopted as the team’s ground truth, enforced by
+                  property-based testing over random event sequences; mentored an engineer through the event generator
+                </li>
+                <li>
+                  Root-caused and fixed defects in the daemon’s core data path: a kernel-to-hardware desynchronization
+                  traced through the Linux kernel source to conflicting definitions of route identity, and a deadlock
+                  where ACL entries with identical content shared one key while the Myers diff addressed them by position
+                </li>
+                <li>
+                  Moved the team off legacy release pipelines onto a dedicated pipeline gating on lint, unit and
+                  integration tests, and a pre-production stage of physical switches; showcased org-wide as a model for
+                  other teams
+                </li>
+              </Highlights>
+            </Role>
+            <Role title="Software Development Engineer" team="Amazon S3" dates="July 2022 – May 2025">
+              <Highlights summary="Amazon S3 Vectors, a new public vector storage service">
+                <li>
+                  Owned the public API design as an early engineer, driving the design review with principal engineers
+                  and the security team before authoring the spec in Smithy
+                </li>
+                <li>
+                  Delivered an asynchronous compaction service that raised sustained per-index PUT throughput 8x to 40
+                  MB/s, removing compaction from the customer request path
+                </li>
+              </Highlights>
+              <Highlights summary="Log compression, the Rust format behind Amazon’s exabyte-scale logging fleet">
+                <li>
+                  Owned the state machine and the auto-detection behind zero-config onboarding, which unlocked
+                  fleet-wide adoption and nine-figure annual storage savings
+                </li>
+                <li>
+                  Drove adoption across S3’s index services and seven log-reader libraries, writing the Java and Python
+                  bindings that unblocked those teams; led three engineers building fleet-wide tracking of unrealized
+                  compression savings
+                </li>
+                <li>
+                  Uncovered a log data-loss risk in a gzip-to-Zstandard migration, reproducing it by stress-testing
+                  service restarts until an ungraceful shutdown corrupted logs; designed the mitigation that kept the
+                  migration on schedule
+                </li>
+                <li>
+                  Led a real-time Apache Iceberg ingestion system for the same log data from prototype to production at
+                  petabytes per day, decomposing the design across two engineers
+                </li>
+              </Highlights>
+            </Role>
+          </Organization>
+          <Organization name="University of North Carolina at Chapel Hill" dates="July 2021 – July 2022">
+            <Role title="Teaching Assistant Professor" location="Chapel Hill, NC">
+              <Highlights summary="Taught two courses per semester including a special-topics course in data compression, with roughly 300 students and 15 paid learning assistants" />
+            </Role>
+          </Organization>
+        </Section>
+        <Section id="education" title="Education">
+          <Organization name="University of North Carolina at Chapel Hill">
+            <Role
+              title="Ph.D., Computer Science, “Receiver-Driven Video Adaptation” (M.S. awarded 2019)"
+              dates="August 2014 – August 2021"
+            >
+              <Highlights>
+                <li>
+                  Designed a rate-sorted entropy coder that sorts arithmetically coded symbols into quality layers a
+                  receiver can drop with no extra signaling; US{" "}
+                  <a href="https://patents.google.com/patent/US11212531">patent</a>,{" "}
+                  <a href="https://doi.org/10.17615/tn4j-yt38">dissertation</a>, and an M-JPEG{" "}
+                  <a href="https://github.com/onsmith/layered-ac">reference coder</a> in Java
+                </li>
+                <li>
+                  Residual-domain HEVC/H.265 <a href="https://github.com/onsmith/hm-residual-transrater">transrater</a>{" "}
+                  in C++ on the HM reference software, retargeting bitrate by requantizing coded residuals rather than
+                  fully decoding and re-encoding
+                </li>
+              </Highlights>
+            </Role>
+          </Organization>
+          <Organization name="Coastal Carolina University">
+            <Role title="B.S. in Computer Science and Applied Mathematics, 4.0 GPA" dates="May 2014" />
+          </Organization>
+        </Section>
+        <Section id="skills" title="Skills">
+          <SkillGroup label="Languages" skills={["Rust", "Java", "Python", "C++", "C", "TypeScript", "SQL"]} />
+          <SkillGroup
+            label="Media & compression"
+            skills={["H.265/HEVC", "H.264/AVC", "M-JPEG", "FFmpeg", "arithmetic coding", "Zstandard", "gzip"]}
           />
-          <CardContactListItem
-            href="https://github.com/onsmith"
-            icon={faGithub}
+          <SkillGroup
+            label="Systems"
+            skills={[
+              "AWS (S3, DynamoDB, ECS/Fargate, Lambda)",
+              "distributed systems",
+              "Smithy",
+              "gRPC",
+              "Linux networking (netlink)",
+            ]}
           />
-        </CardContactList>
-      </InfoCard>
-    </main>
+        </Section>
+      </SplitLayout>
+    </>
   );
 }

@@ -1,9 +1,6 @@
-/** @type {import('next').NextConfig} */
-
-module.exports = {
+/** @type {import("next").NextConfig} */
+export default {
+  output: "export",
   reactStrictMode: true,
-  swcMinify: true,
-  basePath: process.env.BASE_PATH || undefined,
-  assetPrefix: process.env.ASSET_PREFIX || undefined,
-  images: { unoptimized: true },
+  agentRules: false,
 };
