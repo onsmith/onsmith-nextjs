@@ -155,13 +155,13 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
           <SkillGroup label="Languages" skills={["Rust", "Java", "Python", "C++", "C", "TypeScript", "SQL"]} />
           <SkillGroup
             label="Media & compression"
-            skills={["H.265/HEVC", "H.264/AVC", "M-JPEG", "FFmpeg", "arithmetic coding", "Zstandard", "gzip"]}
+            skills={["H.265/HEVC", "H.264/AVC", "M-JPEG", "FFmpeg", "Arithmetic coding", "Zstandard", "gzip"]}
           />
           <SkillGroup
             label="Systems"
             skills={[
               "AWS (S3, DynamoDB, ECS/Fargate, Lambda)",
-              "distributed systems",
+              "Distributed systems",
               "Smithy",
               "gRPC",
               "Linux networking (netlink)",
