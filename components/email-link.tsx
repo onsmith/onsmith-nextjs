@@ -8,7 +8,7 @@ export function EmailLink({ address }: { address: string }) {
     setHref(`mailto:${address}`);
   }, [address]);
   return (
-    <a href={href} aria-label="Email" className="flex">
+    <a href={href} aria-label="Email" className="flex text-logo hover:opacity-70">
       <MailIcon className="size-6" />
     </a>
   );

@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
-import { MapPinIcon } from "@/components/icons";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { FileIcon, MapPinIcon } from "@/components/icons";
 
-/** Identity block: headshot, name, role, location, contact links with the toggle, summary, and section links. */
+/** Identity block: headshot, name, role, location, contact links, summary, resume button, and section links. */
 export function Profile({
   name,
   role,
@@ -10,6 +9,7 @@ export function Profile({
   headshot,
   summary,
   contacts,
+  resume,
   nav,
 }: {
   name: string;
@@ -18,32 +18,37 @@ export function Profile({
   headshot: string;
   summary: string;
   contacts: ReactNode;
+  resume: string;
   nav?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-5">
-      <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-6">
+    <div className="flex flex-col gap-5 lg:gap-4">
+      <div className="flex flex-col items-start gap-4 lg:gap-6">
         <img
           src={headshot}
           alt={`Headshot of ${name}`}
           width={480}
           height={480}
-          className="size-16 shrink-0 rounded-full lg:size-40"
+          className="size-24 rounded-full lg:size-40"
         />
-        <div className="min-w-0">
-          <h1 className="text-3xl font-bold tracking-tight lg:text-5xl">{name}</h1>
-          <p className="mt-1 text-lg font-medium lg:mt-3 lg:text-xl">{role}</p>
+        <div>
+          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">{name}</h1>
+          <p className="mt-2 text-lg font-medium lg:mt-3 lg:text-xl">{role}</p>
         </div>
       </div>
       <p className="flex items-center gap-1.5 text-muted">
         <MapPinIcon className="size-4 shrink-0" />
         {location}
       </p>
-      <div className="flex items-center gap-4">
-        {contacts}
-        <ThemeToggle />
-      </div>
+      {contacts}
       <p className="max-w-md leading-relaxed">{summary}</p>
+      <a
+        href={resume}
+        className="inline-flex w-fit items-center gap-2 rounded-md border border-muted px-3 py-2 text-sm font-semibold text-fg hover:bg-surface hover:no-underline"
+      >
+        <FileIcon className="size-4" />
+        Resume
+      </a>
       {nav}
     </div>
   );

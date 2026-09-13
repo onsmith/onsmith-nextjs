@@ -7,7 +7,7 @@ export function ThemeToggle() {
       type="button"
       data-theme-toggle=""
       aria-label="Toggle dark theme"
-      className="hidden size-9 cursor-pointer items-center justify-center rounded-md text-muted hover:text-fg js:inline-flex"
+      className="hidden size-9 cursor-pointer items-center justify-center rounded-md text-logo hover:opacity-70 js:inline-flex"
     >
       <MoonIcon className="size-5 dark:hidden" />
       <SunIcon className="hidden size-5 dark:block" />

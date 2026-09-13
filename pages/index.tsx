@@ -44,9 +44,9 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
                 linkedin="https://www.linkedin.com/in/onsmith13/"
                 github="https://github.com/onsmith"
                 email={email}
-                resume="/resume.pdf"
               />
             }
+            resume="/resume.pdf"
             nav={
               <SectionNav
                 sections={[
@@ -120,10 +120,7 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
         </Section>
         <Section id="education" title="Education">
           <Organization name="University of North Carolina at Chapel Hill">
-            <Role
-              title="Ph.D., Computer Science, “Receiver-Driven Video Adaptation” (M.S. awarded 2019)"
-              dates="August 2014 – August 2021"
-            >
+            <Role title="Ph.D., Computer Science, “Receiver-Driven Video Adaptation”" dates="August 2014 – August 2021">
               <Highlights>
                 <li>
                   Designed a rate-sorted entropy coder that sorts arithmetically coded symbols into quality layers a
@@ -136,6 +133,16 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
                   Residual-domain HEVC/H.265 <a href="https://github.com/onsmith/hm-residual-transrater">transrater</a>{" "}
                   in C++ on the HM reference software, retargeting bitrate by requantizing coded residuals rather than
                   fully decoding and re-encoding
+                </li>
+              </Highlights>
+            </Role>
+            <Role title="M.S., Computer Science" dates="December 2019">
+              <Highlights>
+                <li>
+                  Proposed a frameless camera sensor architecture that times how long each pixel takes to gather a
+                  configurable amount of light, instead of how much light it gathers per frame, producing an
+                  asynchronous high dynamic range pixel stream; NOSSDAV 2017{" "}
+                  <a href="https://doi.org/10.1145/3083165.3083178">paper</a>
                 </li>
               </Highlights>
             </Role>
