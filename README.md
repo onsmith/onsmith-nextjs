@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# onsmith.com
 
-## Getting Started
+The source for [www.onsmith.com](https://www.onsmith.com), a single static page built with [Next.js](https://nextjs.org) and [Tailwind CSS](https://tailwindcss.com) and served by [GitHub Pages](https://pages.github.com).
 
-First, run the development server:
+## Setup
+
+Install [Node.js 24](https://nodejs.org), then run `npm ci` to install the locked dependencies.
+
+## Edit content
+
+All page text lives in [pages/index.tsx](pages/index.tsx), written as JSX elements in the same order as the resume.
+
+- To add a role, copy a `<Role>` element inside the matching `<Organization>` and edit its props and bullets.
+- To change the email address, edit the plain address in `getStaticProps`. The page ships it only in encoded form.
+
+## Preview
+
+`npm run dev` serves the page at http://localhost:3000 and reloads it on every edit.
+
+To preview the exact files that deploy, build the site and serve the `out/` folder:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm run build
+npm run check
+python3 -m http.server --directory out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:8000.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Update the resume
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Build the resume from LaTeX with the phone number and email address removed.
+2. Replace `public/resume.pdf` with the new PDF.
+3. Copy any changed bullets into `pages/index.tsx`.
+4. Run `npm run build` and `npm run check`. The check fails if the PDF's links or metadata contain an email address or phone number, but it cannot read the PDF's visible text, so open the PDF and confirm neither appears.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Deploy
 
-## Learn More
+Pushing to `main` runs the [deploy workflow](.github/workflows/ghpages-deploy.yml). It runs the unit tests, builds the site, runs the output check, and publishes `out/` to the `gh-pages` branch, which GitHub Pages serves. If any step fails, the workflow stops before publishing and the current site stays up.
 
-To learn more about Next.js, take a look at the following resources:
+To roll back a bad deploy, revert its commit on `gh-pages` and push, then commit the fix to `main`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Checks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `npm test` runs unit tests for the email encoding, the theme script, and color contrast.
+- `npm run check` scans the build output for email addresses, phone numbers, image location metadata, and a missing or misplaced theme script.
