@@ -60,8 +60,13 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
         }
       >
         <Section id="experience" title="Experience">
-          <Organization name="Amazon Web Services" location="Raleigh, NC" dates="July 2022 – Present">
-            <Role title="Software Development Engineer" team="Network Product Development" dates="May 2025 – Present">
+          <Organization
+            name="Amazon Web Services"
+            title="Software Development Engineer"
+            location="Raleigh, NC"
+            dates="July 2022 – Present"
+          >
+            <Role title="Network Product Development" dates="May 2025 – Present">
               <Highlights summary="The Rust replacement for AWS’s legacy switch agent, translating Linux kernel network state into ASIC hardware">
                 <li>
                   Owned the specification of correct daemon behavior, adopted as the team’s ground truth, enforced by
@@ -79,7 +84,7 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
                 </li>
               </Highlights>
             </Role>
-            <Role title="Software Development Engineer" team="Amazon S3" dates="July 2022 – May 2025">
+            <Role title="Amazon S3" dates="July 2022 – May 2025">
               <Highlights summary="Amazon S3 Vectors, a new public vector storage service">
                 <li>
                   Owned the public API design as an early engineer, driving the design review with principal engineers
@@ -112,10 +117,20 @@ export default function Home({ email }: InferGetStaticPropsType<typeof getStatic
               </Highlights>
             </Role>
           </Organization>
-          <Organization name="University of North Carolina at Chapel Hill" dates="July 2021 – July 2022">
-            <Role title="Teaching Assistant Professor" location="Chapel Hill, NC">
-              <Highlights summary="Taught two courses per semester including a special-topics course in data compression, with roughly 300 students and 15 paid learning assistants" />
-            </Role>
+          <Organization
+            name="University of North Carolina at Chapel Hill"
+            title="Teaching Assistant Professor"
+            dates="July 2021 – July 2022"
+          >
+            <Highlights
+              summary={
+                <>
+                  Taught Foundations of Programming, Models of Languages and Computation, and a special-topics course
+                  in data compression, two per semester with roughly 300 students and 15 paid learning assistants (
+                  <a href="https://www.ratemyprofessors.com/professor/2619092">Rate My Professors</a>)
+                </>
+              }
+            />
           </Organization>
         </Section>
         <Section id="education" title="Education">
